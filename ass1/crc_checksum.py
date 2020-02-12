@@ -88,21 +88,11 @@ DIVISOR = "10000011"
 final_message = ""
 ERRORS = []
 for frame in message_chunks:
-    # if frame == ESC:
-    #     escape_next = True
-    #     continue
-    # if escape_next == True:
-    #     frame = xor(frame,ESC_FLAG)
-    #     escape_next = False
     if message_continuing == False and frame == FLAG:
         message_continuing = True
     elif message_continuing == True and frame == FLAG:
-        message_continuing = False
-        # check_bits = current_message[-1]
-        
+        message_continuing = False        
         VALID = divides("".join(current_message)[:-1],DIVISOR)
-        # print("".join(current_message)[:-1],DIVISOR)
-        # VALID = isdivides(current_message,DIVISOR)
         current_string = ""
         escape_next = False
         for i in current_message[:-1]:
@@ -119,14 +109,9 @@ for frame in message_chunks:
             final_message += current_string
         else:
             ERRORS.append(count_frames)
-        
-        # print(VALID,current_string,count_frames)
         current_message = []
-        # print("#######")
     else:
-        # print(frame,byte2int(frame),chr(byte2int(frame)))
         current_message.append(frame)
-# print(chars)
 print(count_frames)
 print(",".join([str(x) for x in ERRORS]))
 print(final_message,end = '')

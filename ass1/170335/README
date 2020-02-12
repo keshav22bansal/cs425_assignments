@@ -1,0 +1,9 @@
+Dependencies:
+    Python 3.6.9
+To run code for problem 1 execute the following command:
+    $ python3 crc_checksum.py <INPUT_FILE_NAME>
+
+To run the code for problem 2 execute the command:
+    $ python3 hamming_code.py
+
+Program 2 takes input from the file "input.txt" as mentioned in the problem statement
